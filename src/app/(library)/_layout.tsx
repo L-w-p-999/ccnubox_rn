@@ -79,6 +79,18 @@ export default function Layout() {
             ),
           }}
         />
+        <Stack.Screen
+          name="trustScore"
+          options={{
+            headerTitle: () => (
+              <>
+                {CurrentComponents && (
+                  <CurrentComponents.HeaderCenter title="信誉积分" />
+                )}
+              </>
+            ),
+          }}
+        />
       </Stack>
     </View>
   );
