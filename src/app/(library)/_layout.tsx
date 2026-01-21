@@ -91,6 +91,42 @@ export default function Layout() {
             ),
           }}
         />
+        <Stack.Screen
+          name="myFavourites"
+          options={{
+            headerTitle: () => (
+              <>
+                {CurrentComponents && (
+                  <CurrentComponents.HeaderCenter title="我的收藏" />
+                )}
+              </>
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="usageStatistics"
+          options={{
+            headerTitle: () => (
+              <>
+                {CurrentComponents && (
+                  <CurrentComponents.HeaderCenter title="使用统计" />
+                )}
+              </>
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="appointmentRecords"
+          options={{
+            headerTitle: () => (
+              <>
+                {CurrentComponents && (
+                  <CurrentComponents.HeaderCenter title="预约记录" />
+                )}
+              </>
+            ),
+          }}
+        />
       </Stack>
     </View>
   );

@@ -152,7 +152,10 @@ export default function LibraryPage() {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.functionItem}>
+            <TouchableOpacity
+              style={styles.functionItem}
+              onPress={() => router.push('/(library)/myFavourites')}
+            >
               <View
                 style={[
                   styles.functionIcon,

@@ -1,9 +1,36 @@
 import Progress from '@/components/progress';
 import { AboutSeatCard } from '@/modules/library/seats/components/aboutSeatCard';
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+
+interface deductionRecordProps {
+  recordID: number;
+  title: string;
+  seatNumber: string;
+  decreasePoints: string;
+}
 export default function TrustScore() {
   const [score, setScore] = useState(75);
+  const [records, setRecords] = useState<deductionRecordProps[]>([
+    {
+      recordID: 1,
+      title: '未及时签到',
+      seatNumber: '222',
+      decreasePoints: '-100分',
+    },
+    {
+      recordID: 2,
+      title: '未按时归还座位',
+      seatNumber: '145',
+      decreasePoints: '-100分',
+    },
+    {
+      recordID: 3,
+      title: '未及时签到',
+      seatNumber: '322',
+      decreasePoints: '-100分',
+    },
+  ]);
   return (
     <View style={styles.container}>
       <View style={styles.progressStyle}>
@@ -95,14 +122,19 @@ export default function TrustScore() {
             扣分记录
           </Text>
         </View>
-        <View>
-          <AboutSeatCard
-            title="未及时签到"
-            seatNumber="222"
-            decreasePoints="-100"
-            favouriteDisplay={false}
-          ></AboutSeatCard>
-        </View>
+        <ScrollView>
+          {records.map(item => {
+            return (
+              <AboutSeatCard
+                key={item.recordID}
+                title={item.title}
+                seatNumber={item.seatNumber}
+                decreasePoints={item.decreasePoints}
+                favouriteDisplay={false}
+              ></AboutSeatCard>
+            );
+          })}
+        </ScrollView>
       </View>
     </View>
   );
