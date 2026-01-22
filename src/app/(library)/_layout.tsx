@@ -1,10 +1,11 @@
 import { Stack } from 'expo-router';
 import * as React from 'react';
-import { StyleProp, StyleSheet, View } from 'react-native';
+import { Pressable, StyleProp, StyleSheet, Text, View } from 'react-native';
 
+import CalenderIcon from '@/assets/icons/library/calender.svg';
+import Modal from '@/components/modal';
 import useThemeBasedComponents from '@/store/themeBasedComponents';
 import useVisualScheme from '@/store/visualScheme';
-
 export default function Layout() {
   const { currentStyle } = useVisualScheme(({ currentStyle }) => ({
     currentStyle,
@@ -21,6 +22,25 @@ export default function Layout() {
     alignItems: 'center';
   }>;
 
+  const openCalendarModal = () => {
+    Modal.show({
+      title: '',
+      children: (
+        <View style={{ padding: 20, backgroundColor: '#FFFFFF' }}>
+          <Text>请选择需要预约的日期</Text>
+          {/* 在这里可以添加日期选择器组件 */}
+        </View>
+      ),
+      onConfirm: () => {
+        // 确认按钮点击处理
+        console.log('日期选择确认');
+      },
+      onCancel: () => {
+        // 取消按钮点击处理
+        console.log('取消选择');
+      },
+    });
+  };
   return (
     <View style={[styles.container]}>
       <Stack
@@ -123,6 +143,17 @@ export default function Layout() {
                 {CurrentComponents && (
                   <CurrentComponents.HeaderCenter title="预约记录" />
                 )}
+              </>
+            ),
+            headerRight: () => (
+              <>
+                <Pressable onPress={openCalendarModal}>
+                  <CalenderIcon
+                    width={24}
+                    height={24}
+                    style={{ marginRight: 16 }}
+                  />
+                </Pressable>
               </>
             ),
           }}
