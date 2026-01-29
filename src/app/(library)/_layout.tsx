@@ -151,7 +151,7 @@ export default function Layout() {
                   <CalenderIcon
                     width={24}
                     height={24}
-                    style={{ marginRight: 16 }}
+                    style={{ marginRight: 0 }}
                   />
                 </Pressable>
               </>
